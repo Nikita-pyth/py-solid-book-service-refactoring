@@ -5,23 +5,23 @@ from app.models import Book
 
 class IPrinter(ABC):
     @abstractmethod
-    def print_book(self, book: Book):
+    def print_book(self, book: Book) -> None:
         pass
 
 
 class IDisplayService(ABC):
     @abstractmethod
-    def display(self, book: Book):
+    def display(self, book: Book) -> None:
         pass
 
 
 class DisplayConsole(IDisplayService):
-    def display(self, book) -> None:
+    def display(self, book: Book) -> None:
         print(book.content)
 
 
 class DisplayReverse(IDisplayService):
-    def display(self, book) -> None:
+    def display(self, book: Book) -> None:
         print(book.content[::-1])
 
 

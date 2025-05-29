@@ -1,21 +1,16 @@
 from app.models import Book
-from app.services import ConsolePrinter, ReversePrinter, DisplayConsole, DisplayReverse
+from app.services import (ConsolePrinter, ReversePrinter,
+                          DisplayConsole, DisplayReverse)
 from app.serializers import JsonSerialize, XmlSerialize
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> str | None:
-    display_strategies = {
-        "console": DisplayConsole(),
-        "reverse": DisplayReverse()
-    }
-    print_strategies = {
-        "console": ConsolePrinter(),
-        "reverse": ReversePrinter()
-    }
-    serialize_strategies = {
-        "json": JsonSerialize(),
-        "xml": XmlSerialize()
-    }
+    display_strategies = {"console": DisplayConsole(),
+                          "reverse": DisplayReverse()}
+    print_strategies = {"console": ConsolePrinter(),
+                        "reverse": ReversePrinter()}
+    serialize_strategies = {"json": JsonSerialize(),
+                            "xml": XmlSerialize()}
 
     result = None
 
@@ -44,7 +39,6 @@ def main(book: Book, commands: list[tuple[str, str]]) -> str | None:
             raise ValueError(f"Unknown command: {cmd}")
 
     return result
-
 
 
 if __name__ == "__main__":
